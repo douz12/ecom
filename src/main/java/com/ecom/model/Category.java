@@ -1,18 +1,34 @@
 package com.ecom.model;
 
-import com.google.common.collect.Lists;
-
 import java.util.List;
 
 public class Category {
     private String categoryId;
     private String categoryValue;
     private List<Category> subCategories;
+    private List<Offer> offers;
+
+    public Category() {
+    }
 
     public Category(String categoryId, String categoryValue) {
         this.categoryId = categoryId;
-        this.subCategories = Lists.newArrayList();
         this.categoryValue = categoryValue;
+    }
+
+    public Category(String categoryId, String categoryValue, List<Category> subCategories, List<Offer> offers) {
+        this.categoryId = categoryId;
+        this.categoryValue = categoryValue;
+        this.subCategories = subCategories;
+        this.offers = offers;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 
     public void addSubCategorie(Category subCategory) {
