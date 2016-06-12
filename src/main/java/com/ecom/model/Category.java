@@ -1,11 +1,21 @@
 package com.ecom.model;
 
+import com.datastax.driver.mapping.annotations.Column;
+import com.datastax.driver.mapping.annotations.PartitionKey;
+import com.datastax.driver.mapping.annotations.Table;
+
 import java.util.List;
 
+@Table(keyspace = "ecom", name = "category")
 public class Category {
+    @PartitionKey
+    @Column(name = "categoryid")
     private String categoryId;
+    @Column(name = "categoryvalue")
     private String categoryValue;
+    @Column(name = "subcategories")
     private List<Category> subCategories;
+    @Column(name = "offers")
     private List<Offer> offers;
 
     public Category() {

@@ -1,9 +1,18 @@
 package com.ecom.model;
 
+import com.datastax.driver.mapping.annotations.Column;
+import com.datastax.driver.mapping.annotations.PartitionKey;
+import com.datastax.driver.mapping.annotations.Table;
+
+import java.util.Set;
+
+@Table(keyspace = "ecom", name = "vendor")
 public class Vendor {
+    @PartitionKey
+    @Column(name = "vendorid")
     private String vendorId;
-    private String vendorName;
-    private Adress adress;
+    private String name;
+    private Set<Address> address;
 
     public String getVendorId() {
         return vendorId;
@@ -13,19 +22,19 @@ public class Vendor {
         this.vendorId = vendorId;
     }
 
-    public String getVendorName() {
-        return vendorName;
+    public String getName() {
+        return name;
     }
 
-    public void setVendorName(String vendorName) {
-        this.vendorName = vendorName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Set<Address> getAddress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Set<Address> address) {
+        this.address = address;
     }
 }

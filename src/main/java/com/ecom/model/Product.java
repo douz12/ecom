@@ -1,9 +1,16 @@
 package com.ecom.model;
 
+import com.datastax.driver.mapping.annotations.Column;
+import com.datastax.driver.mapping.annotations.PartitionKey;
+import com.datastax.driver.mapping.annotations.Table;
+
+@Table(keyspace = "ecom", name = "product")
 public class Product {
+    @PartitionKey
+    @Column(name = "productid")
     private String productId;
-    private String productName;
-    private String productBrand;
+    private String name;
+    private String brand;
     private String mpn;
     private String gtin13;
 
@@ -31,19 +38,19 @@ public class Product {
         this.mpn = mpn;
     }
 
-    public String getProductBrand() {
-        return productBrand;
+    public String getName() {
+        return name;
     }
 
-    public void setProductBrand(String productBrand) {
-        this.productBrand = productBrand;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }

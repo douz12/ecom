@@ -1,12 +1,21 @@
 package com.ecom.model;
 
+import com.datastax.driver.mapping.annotations.Column;
+import com.datastax.driver.mapping.annotations.PartitionKey;
+import com.datastax.driver.mapping.annotations.Table;
+
 import java.util.List;
 
+@Table(keyspace = "ecom", name = "offer")
 public class Offer {
+    @PartitionKey
+    @Column(name = "offerid")
     private String offerId;
     private Product product;
-    private List<String> images;
+    private List<Image> images;
+    @Column(name = "availabilitytext")
     private String availabilityText;
+    @Column(name = "deliverytext")
     private String deliveryText;
 
     public String getOfferId() {
@@ -25,11 +34,11 @@ public class Offer {
         this.product = product;
     }
 
-    public List<String> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
