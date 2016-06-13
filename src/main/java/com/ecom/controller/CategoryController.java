@@ -15,11 +15,11 @@ public class CategoryController {
     private CassandraConfig cassandraConfig;
 
     @RequestMapping("/category/{categoryId}/{categoryValue}")
-    public ResponseEntity<Category> getCategory(@PathVariable String categoryId, @PathVariable String categoryValue) {
+    public ResponseEntity<Category> getCategory(@PathVariable String categoryId) {
         Category category = cassandraConfig
                 .getMappingManager()
                 .createAccessor(CategoryAccessor.class)
-                .getCategoryById(categoryId, categoryValue)
+                .getCategoryById(categoryId)
                 .one();
         if (category == null) {
             System.err.println("Category id [" + categoryId + "] not found.");
