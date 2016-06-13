@@ -13,10 +13,9 @@ public class Category {
     private String categoryId;
     @Column(name = "categoryvalue")
     private String categoryValue;
-    @Column(name = "subcategories")
-    private List<Category> subCategories;
     @Column(name = "offers")
     private List<Offer> offers;
+    private SubCategory subCategory;
 
     public Category() {
     }
@@ -26,10 +25,9 @@ public class Category {
         this.categoryValue = categoryValue;
     }
 
-    public Category(String categoryId, String categoryValue, List<Category> subCategories, List<Offer> offers) {
+    public Category(String categoryId, String categoryValue, List<Offer> offers) {
         this.categoryId = categoryId;
         this.categoryValue = categoryValue;
-        this.subCategories = subCategories;
         this.offers = offers;
     }
 
@@ -41,16 +39,12 @@ public class Category {
         this.offers = offers;
     }
 
-    public void addSubCategorie(Category subCategory) {
-        this.getSubCategories().add(subCategory);
+    public SubCategory getSubCategory() {
+        return subCategory;
     }
 
-    public List<Category> getSubCategories() {
-        return subCategories;
-    }
-
-    public void setSubCategories(List<Category> subCategories) {
-        this.subCategories = subCategories;
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     public String getCategoryId() {
