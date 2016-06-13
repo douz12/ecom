@@ -12,7 +12,7 @@ public class Vendor {
     @Column(name = "vendorid")
     private String vendorId;
     private String name;
-    private Set<Address> address;
+    private Set<String> addressIds;
 
     public String getVendorId() {
         return vendorId;
@@ -30,11 +30,11 @@ public class Vendor {
         this.name = name;
     }
 
-    public Set<Address> getAddress() {
-        return address;
+    public Set<String> getAddressIds() {
+        return addressIds;
     }
 
-    public void setAddress(Set<Address> address) {
-        this.address = address;
+    public void setAddressIds(Set<String> addressIds) {
+        this.addressIds = addressIds;
     }
 }

@@ -3,6 +3,7 @@ package com.ecom.model;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -11,8 +12,10 @@ public class Offer {
     @PartitionKey
     @Column(name = "offerid")
     private String offerId;
-    private Product product;
-    private List<Image> images;
+    @Column(name = "productids")
+    private List<String> productIds;
+    @Column(name = "imageids")
+    private List<String> imageIds;
     @Column(name = "availabilitytext")
     private String availabilityText;
     @Column(name = "deliverytext")
@@ -26,20 +29,20 @@ public class Offer {
         this.offerId = offerId;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<String> getProductIds() {
+        return productIds;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductIds(List<String> productIds) {
+        this.productIds = productIds;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public List<String> getImageIds() {
+        return imageIds;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setImageIds(List<String> imageIds) {
+        this.imageIds = imageIds;
     }
 
     public String getAvailabilityText() {

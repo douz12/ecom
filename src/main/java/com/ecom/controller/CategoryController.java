@@ -29,5 +29,12 @@ public class CategoryController {
         }
         return new ResponseEntity<Category>(category, HttpStatus.OK);
     }
+
+    @RequestMapping("/category/{categoryId}")
+    public ResponseEntity<Category> getCategory(@PathVariable String categoryId) {
+        Category category = new Category(categoryId, "info");
+        cassandraConfig.getMappingManager().mapper(Category.class).save(category);
+        return  new ResponseEntity<Category>(category, HttpStatus.OK);
+    }
 }
 
