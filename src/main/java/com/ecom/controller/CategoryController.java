@@ -6,9 +6,7 @@ import com.ecom.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CategoryController {
@@ -30,9 +28,8 @@ public class CategoryController {
         return new ResponseEntity<Category>(category, HttpStatus.OK);
     }
 
-    @RequestMapping("/category/{categoryId}")
-    public ResponseEntity<Category> getCategory(@PathVariable String categoryId) {
-        Category category = new Category(categoryId, "info");
+    @RequestMapping(value = "/category/add", method = RequestMethod.POST)
+    public ResponseEntity<Category> addCategory(@RequestBody Category category) {
         cassandraConfig.getMappingManager().mapper(Category.class).save(category);
         return  new ResponseEntity<Category>(category, HttpStatus.OK);
     }
