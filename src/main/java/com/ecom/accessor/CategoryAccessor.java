@@ -9,6 +9,6 @@ import com.ecom.model.Category;
 @Accessor
 public interface CategoryAccessor {
 
-    @Query(value = "SELECT * FROM user WHERE categoryid = :id")
-    Result<Category> getCategoryById(@Param("id") String categoryId);
+    @Query(value = "SELECT * FROM user WHERE categoryid = :id AND categoryvalue = :value")
+    Result<Category> getCategoryById(@Param("id") String categoryId, @Param("value") String value);
 }
