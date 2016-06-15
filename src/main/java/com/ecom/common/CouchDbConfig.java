@@ -18,14 +18,16 @@ public class CouchDbConfig {
 
     @Autowired
     private Environment environment;
-    private final String DATABASE = environment.getProperty("couchdb-database");
-    private final String URL = environment.getProperty("couchdb-url");
 
+    @Bean
     public CouchDbInstance createCouchDbInstance() {
+
         try {
             return new StdCouchDbInstance(new StdHttpClient
                     .Builder()
-                    .url(URL)
+                    .url(environment.getProperty("couchdb-url"))
+                    .password(environment.getProperty("couchdb-password"))
+                    .username(environment.getProperty("couchdb-user"))
                     .build());
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -35,6 +37,6 @@ public class CouchDbConfig {
 
     @Bean
     public CouchDbConnector getCouchDbConnector() {
-        return createCouchDbInstance().createConnector(DATABASE, true);
+        return createCouchDbInstance().createConnector(environment.getProperty("couchdb-database"), true);
     }
 }
