@@ -5,6 +5,7 @@ import org.ektorp.CouchDbInstance;
 import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -32,6 +33,7 @@ public class CouchDbConfig {
         return null;
     }
 
+    @Bean
     public CouchDbConnector getCouchDbConnector() {
         return createCouchDbInstance().createConnector(DATABASE, true);
     }
