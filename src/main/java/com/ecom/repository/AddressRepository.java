@@ -11,15 +11,8 @@ import java.util.List;
 
 public class AddressRepository extends CouchDbRepositorySupport<Address> {
 
-    @Autowired
-    private static CouchDbConfig couchDbConfig;
-
     protected AddressRepository(CouchDbConnector db) {
         super(Address.class, db);
-    }
-
-    public static AddressRepository connectToCouchDb() {
-        return new AddressRepository(couchDbConfig.getCouchDbConnector());
     }
 
     @GenerateView

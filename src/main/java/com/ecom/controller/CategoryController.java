@@ -16,12 +16,11 @@ public class CategoryController {
     @Autowired
     private CouchDbConfig couchDbConfig;
 
-    @RequestMapping("/category/{categoryId}")
+    @RequestMapping("/category/{categoryId}/{categoryName}")
     public ResponseEntity<Category> getCategory(@PathVariable String categoryId) {
         return QueryResponse
                 .<Category>toResponseEntity()
-                .apply(CategoryRepository
-                        .connectToCouchDb()
+                .apply(new CategoryRepository(couchDbConfig.getCouchDbConnector())
                         .findByCategoryId(categoryId)
                         .stream()
                         .filter(cat -> cat != null)

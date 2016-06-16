@@ -10,15 +10,8 @@ import java.util.List;
 
 public class ImageRepository extends CouchDbRepositorySupport<Image> {
 
-    @Autowired
-    private static CouchDbConfig couchDbConfig;
-
     public ImageRepository(CouchDbConnector db) {
         super(Image.class, db);
-    }
-
-    public static ImageRepository connectToCouchDb() {
-        return new ImageRepository(couchDbConfig.getCouchDbConnector());
     }
 
     public List<Image> findBySrc(String src) {

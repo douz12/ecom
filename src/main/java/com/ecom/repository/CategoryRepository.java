@@ -11,15 +11,8 @@ import java.util.List;
 
 public class CategoryRepository extends CouchDbRepositorySupport<Category> {
 
-    @Autowired
-    private static CouchDbConfig couchDbConfig;
-
     public CategoryRepository(CouchDbConnector db) {
         super(Category.class, db);
-    }
-
-    public static CategoryRepository connectToCouchDb() {
-        return new CategoryRepository(couchDbConfig.getCouchDbConnector());
     }
 
     @GenerateView

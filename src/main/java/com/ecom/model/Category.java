@@ -1,6 +1,7 @@
 package com.ecom.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Lists;
 import org.ektorp.docref.DocumentReferences;
 import org.ektorp.docref.FetchType;
 import org.ektorp.support.CouchDbDocument;
@@ -12,7 +13,8 @@ public class Category extends CouchDbDocument {
     private String categoryId;
     private String categoryValue;
     @DocumentReferences(fetch = FetchType.LAZY, descendingSortOrder = true, orderBy = "dateCreated", backReference = "categoryId")
-    private List<Category> subCategories;
+    private List<Category> subCategories = Lists.newArrayList();
+    private List<Offer> offers = Lists.newArrayList();
 
     public String getCategoryId() {
         return categoryId;
