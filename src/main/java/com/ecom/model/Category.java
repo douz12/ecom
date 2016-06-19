@@ -1,10 +1,11 @@
 package com.ecom.model;
 
+import com.ecom.common.utils.CascadeSave;
 import com.google.common.collect.Lists;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -12,12 +13,14 @@ import java.util.List;
 public class Category {
     @Id private String categoryId;
     private String categoryValue;
-    @DBRef(db = "Category")
-    private List<SubCategory> subCategories = Lists.newArrayList();
+    @Field("subCategories")
+    @DBRef
+    @CascadeSave
+    private List<Category> subCategories = Lists.newArrayList();
     @DBRef(db = "Offer")
     private List<Offer> offers = Lists.newArrayList();
 
-    public void addSubCategory(SubCategory category) {
+    public void addSubCategory(Category category) {
         subCategories.add(category);
     }
 
@@ -46,11 +49,11 @@ public class Category {
         this.categoryValue = categoryValue;
     }
 
-    public List<SubCategory> getSubCategories() {
+    public List<Category> getSubCategories() {
         return subCategories;
     }
 
-    public void setSubCategories(List<SubCategory> subCategories) {
+    public void setSubCategories(List<Category> subCategories) {
         this.subCategories = subCategories;
     }
 }
