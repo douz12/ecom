@@ -1,8 +1,6 @@
 package com.ecom.model;
 
-import org.ektorp.support.CouchDbDocument;
-
-public class Address extends CouchDbDocument {
+public class Address {
     private String residentialAddress;
     private String postalCode;
     private String state;

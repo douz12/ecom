@@ -3,21 +3,16 @@ package com.ecom.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import org.ektorp.docref.DocumentReferences;
-import org.ektorp.docref.FetchType;
-import org.ektorp.support.CouchDbDocument;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Set;
 
-public class Offer extends CouchDbDocument{
-    @JsonProperty("_id")
+@Document(collection = "Offer")
+public class Offer {
     private String offerId;
-    @DocumentReferences(fetch = FetchType.LAZY, descendingSortOrder = true, orderBy = "dateCreated", backReference = "categoryId")
     private Set<Category> categories = Sets.newHashSet();
-    @DocumentReferences(fetch = FetchType.LAZY, descendingSortOrder = true, orderBy = "dateCreated", backReference = "productId")
     private List<Product> products = Lists.newArrayList();
-    @DocumentReferences(fetch = FetchType.LAZY, descendingSortOrder = true, orderBy = "dateCreated", backReference = "_id")
     private Vendor vendor;
 
     public String getOfferId() {

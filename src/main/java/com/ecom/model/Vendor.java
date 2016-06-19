@@ -2,16 +2,12 @@ package com.ecom.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Sets;
-import org.ektorp.docref.DocumentReferences;
-import org.ektorp.docref.FetchType;
 
 import java.util.Set;
 
 public class Vendor {
-    @JsonProperty("_id")
     private String vendorId;
     private String vendorName;
-    @DocumentReferences(fetch = FetchType.LAZY, descendingSortOrder = true, orderBy = "dateCreated", backReference = "vendorId")
     private Set<Address> addresses = Sets.newHashSet();
 
     public String getVendorId() {

@@ -1,8 +1,7 @@
 package com.ecom.model;
 
-import org.ektorp.support.CouchDbDocument;
-
-public class Image extends CouchDbDocument {
+public class Image {
+    private static final String type = "Image";
     private String src;
     private String alt;
     private String title;

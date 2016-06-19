@@ -3,7 +3,6 @@ package com.ecom.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Product {
-    @JsonProperty("_id")
     private String productId;
     private String mpn;
     private String gtin13;
