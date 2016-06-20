@@ -1,6 +1,6 @@
 package com.ecom.controller.pages.front;
 
-import com.ecom.repository.CategoryRepository;
+import com.ecom.dao.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
