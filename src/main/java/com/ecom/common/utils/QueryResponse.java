@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
-public  class  QueryResponse<T> {
+public class QueryResponse<T> {
     public static <T> Function<Optional<T>, ResponseEntity<T>> toResponseEntity() {
         return new Function<Optional<T>, ResponseEntity<T>>() {
             @Override
