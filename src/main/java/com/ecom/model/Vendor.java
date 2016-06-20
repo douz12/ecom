@@ -1,14 +1,15 @@
 package com.ecom.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Sets;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Set;
 
+@Document(collection = "Vendor")
 public class Vendor {
     private String vendorId;
     private String vendorName;
-    private Set<Address> addresses = Sets.newHashSet();
+    private Set addresses = Sets.newHashSet();
 
     public String getVendorId() {
         return vendorId;

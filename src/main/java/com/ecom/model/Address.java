@@ -1,5 +1,8 @@
 package com.ecom.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Address")
 public class Address {
     private String residentialAddress;
     private String postalCode;

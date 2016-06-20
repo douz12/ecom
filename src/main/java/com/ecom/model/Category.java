@@ -1,24 +1,18 @@
 package com.ecom.model;
 
-import com.ecom.common.utils.CascadeSave;
 import com.google.common.collect.Lists;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
 @Document(collection = "Category")
 public class Category {
-    @Id private String categoryId;
+    @Id
+    private String categoryId;
     private String categoryValue;
-    @Field("subCategories")
-    @DBRef
-    @CascadeSave
-    private List<Category> subCategories = Lists.newArrayList();
-    @DBRef(db = "Offer")
-    private List<Offer> offers = Lists.newArrayList();
+    private List subCategories = Lists.newArrayList();
+    private List offers = Lists.newArrayList();
 
     public void addSubCategory(Category category) {
         subCategories.add(category);
@@ -49,7 +43,7 @@ public class Category {
         this.categoryValue = categoryValue;
     }
 
-    public List<Category> getSubCategories() {
+    public List getSubCategories() {
         return subCategories;
     }
 

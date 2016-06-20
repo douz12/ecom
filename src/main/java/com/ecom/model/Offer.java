@@ -1,6 +1,5 @@
 package com.ecom.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,8 +10,8 @@ import java.util.Set;
 @Document(collection = "Offer")
 public class Offer {
     private String offerId;
-    private Set<Category> categories = Sets.newHashSet();
-    private List<Product> products = Lists.newArrayList();
+    private Set categories = Sets.newHashSet();
+    private List products = Lists.newArrayList();
     private Vendor vendor;
 
     public String getOfferId() {
